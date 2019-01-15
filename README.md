@@ -1,11 +1,9 @@
-# docker-nginx-laravel-mysql
+# study-phpunit
 
 This is a simple sample.
 
-- docker
-- nginx
-- php-fpm
-- mysql
+- docker/php
+- src
 
 (with Docker for Mac. )
 
@@ -29,39 +27,15 @@ docker-machine version 0.15.0, build b48dc28d
 # Usage
 
 ```
-$ git clone git@github.com:hirotomoz/docker-nginx-laravel-mysql.git
-$ cd docker-nginx-laravel-mysql
+$ git clone https://github.com/hirotomoz/study-phpunit.git
+$ cd study-phpunit
 
 // コンテナ起動
 $ docker-compose up -d
-// プロジェクト作成
-$ docker-compose exec php laravel new
-```
-
-Access `localhost`, then you can get laravel top page. 
-
-```
-$ docker-compose ps
-$ docker-compose down
-```
-
-* mysql設定
-
-./src/laravel/.env
-
-```
-DB_CONNECTION=mysql
-DB_HOST=mysql
-DB_PORT=3306
-DB_DATABASE=root
-DB_USERNAME=root
-DB_PASSWORD=root
-```
-*  マイグレーション
-```
-docker-compose exec php php artisan migrate
-```
-*  認証作成
-```
-docker-compose exec php php artisan make:auth
+// コンテナ入り
+$ docker exec -ti php /bin/bash
+// composerでphpunitインストール
+# composer require --dev phpunit/phpunit:7.4.3
+// テスト実行
+# php vendor/bin/phpunit tests/
 ```
